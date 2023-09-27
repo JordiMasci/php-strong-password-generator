@@ -1,13 +1,6 @@
 <?php
-function generaStringaRandom($lunghezza)
-{
-    $caratteri = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $stringaRandom = '';
-    for ($i = 0; $i < $lunghezza; $i++) {
-        $stringaRandom .= $caratteri[rand(0, strlen($caratteri) - 1)];
-    }
-    return $stringaRandom;
-}
+
+include 'functions.php';
 
 $has_password = isset($_GET['password']);
 $stringa_random = '';
@@ -16,9 +9,6 @@ if ($has_password) {
     $lunghezza_desiderata = $_GET['password'];
     $stringa_random = generaStringaRandom($lunghezza_desiderata);
 }
-
-
-
 
 ?>
 
@@ -43,12 +33,10 @@ if ($has_password) {
             <input type="number" name="password" id="password" required>
             <button class="btn btn-primary">Genera Password</button>
         </form>
-
         <div class="card mt-5">
             <div class="card-header">
                 <?php echo $stringa_random ?>
             </div>
-
         </div>
     </div>
 </body>
