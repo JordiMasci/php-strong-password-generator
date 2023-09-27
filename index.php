@@ -8,6 +8,18 @@ function generaStringaRandom($lunghezza)
     }
     return $stringaRandom;
 }
+
+$has_password = isset($_GET['password']);
+$stringa_random = '';
+
+if ($has_password) {
+    $lunghezza_desiderata = $_GET['password'];
+    $stringa_random = generaStringaRandom($lunghezza_desiderata);
+}
+
+
+
+
 ?>
 
 
@@ -27,9 +39,17 @@ function generaStringaRandom($lunghezza)
     <div class="container">
         <h1>Inserisci password</h1>
         <form method="GET">
-            <input type="text" name="password" id="password" required>
-            <button class="btn btn-primary">Invia</button>
+            <label for="password">Lunghezza della password</label>
+            <input type="number" name="password" id="password" required>
+            <button class="btn btn-primary">Genera Password</button>
         </form>
+
+        <div class="card mt-5">
+            <div class="card-header">
+                <?php echo $stringa_random ?>
+            </div>
+
+        </div>
     </div>
 </body>
 
